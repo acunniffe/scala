@@ -1,10 +1,7 @@
 package com.opticdev.parsers.scala
 import play.api.libs.json._
-
 import scala.meta._
 import scala.util.{Failure, Try}
-import prettyprinters._
-import inputs._
 
 object ScalaCodeToAst {
 
