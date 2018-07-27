@@ -5,6 +5,8 @@ import com.opticdev.parsers.graph.AstType
 import com.opticdev.parsers.sourcegear.advanced
 import com.opticdev.parsers.sourcegear.basic.BasicSourceInterface
 import com.opticdev.parsers._
+import com.opticdev.parsers.scala.sourceinterface.advanced.ScalaSourceInterface
+
 import util.Try
 import com.opticdev.parsers.utils.Profiling
 
@@ -29,7 +31,7 @@ class OpticParser extends ParserBase {
 
   override def basicSourceInterface: BasicSourceInterface = sourceinterface.basic.combined(this)
 
-  override def marvinSourceInterface: advanced.MarvinSourceInterface = ???
+  override def marvinSourceInterface: advanced.MarvinSourceInterface = ScalaSourceInterface
 
   override def parseString(contents: String): ParserResult = {
     val timedOperation = Profiling.time[AstGraph] {
