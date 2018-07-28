@@ -46,9 +46,6 @@ object ScalaSourceInterface extends NodeMutatorMap {
     override val nodeType: String = "Template"
   }
 
-
-
-
   override val mapping: Map[String, AstMutator] = Map(
     "Source" -> new Source,
     "Term.Block" -> new TermBlock,

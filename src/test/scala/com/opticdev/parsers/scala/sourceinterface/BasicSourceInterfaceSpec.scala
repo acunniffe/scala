@@ -1,7 +1,7 @@
 package com.opticdev.parsers.scala.sourceinterface
 
 import com.opticdev.parsers.graph.CommonAstNode
-import com.opticdev.parsers.scala.sourceinterface.basic.{LitBoolInterface, LitIntInterface, LitStringInterface}
+import com.opticdev.parsers.scala.sourceinterface.basic.{LitBoolInterface, LitIntInterface, LitStringInterface, LitSymbolInterface}
 import org.scalatest.FunSpec
 import play.api.libs.json._
 
@@ -63,6 +63,26 @@ class BasicSourceInterfaceSpec extends FunSpec {
 
     it("can generate") {
       assert(stringInterface.generator(JsString("abc"), null, null) == "\"abc\"")
+    }
+
+  }
+
+  describe("Symbol Interface") {
+
+    lazy val symbolInterface = new LitSymbolInterface
+
+    def node(string: String) = CommonAstNode(null, null, Json.parse(s"""{"value": "${string}"}""").as[JsObject])
+
+    it("can parse") {
+      assert(symbolInterface.parser(node("abcdef"), null, null, null) == JsString("abcdef"))
+    }
+
+    it("can mutate") {
+      assert(symbolInterface.mutator(null, null, null, JsString("abc"), null, null) == "'"+"abc")
+    }
+
+    it("can generate") {
+      assert(symbolInterface.generator(JsString("abc"), null, null) == "'"+"abc")
     }
 
   }

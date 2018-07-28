@@ -15,9 +15,9 @@ class OpticParser extends ParserBase {
 
   override def parserVersion: String = "0.0.1"
 
-  override def fileExtensions: Set[String] = Set("scala")
+  override def fileExtensions: Set[String] = Set(".scala")
 
-  override def inlineCommentPrefix : String = "#"
+  override def inlineCommentPrefix : String = "//"
 
   override def programNodeType: graph.AstType = AstType("Source", languageName)
 
